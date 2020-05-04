@@ -41,7 +41,7 @@ class GoogleController extends Controller
 
             }else{
 
-                return response()->json([$user->user
+                return response()->json([$user->user['given_name']
                 ]);
                 $newUser = User::create([
                     'first_name' => $user->user->given_name,
