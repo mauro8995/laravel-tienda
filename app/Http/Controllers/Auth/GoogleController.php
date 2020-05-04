@@ -41,11 +41,10 @@ class GoogleController extends Controller
 
             }else{
 
-                return response()->json([$user->user['given_name']
-                ]);
+
                 $newUser = User::create([
-                    'first_name' => $user->user->given_name,
-                    'last_name' => $user->user->family_name,
+                    'first_name' => $user->user['given_name'],
+                    'last_name' => $user->user['family_name'],
                     'email' => $user->email,
                     'google_id'=> $user->id,
                     'password' => encrypt('123456dummy')
