@@ -40,6 +40,9 @@ class GoogleController extends Controller
                 return redirect('/home');
 
             }else{
+
+                return response()->json([$user->user
+                ]);
                 $newUser = User::create([
                     'first_name' => $user->user->given_name,
                     'last_name' => $user->user->family_name,
