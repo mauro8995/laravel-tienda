@@ -10,13 +10,17 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public static function getTableName()
+    {
+        return with(new static)->getTable();
+    }
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','google_id'
+        'first_name','last_name', 'email', 'password','google_id'
     ];
 
     /**
@@ -36,4 +40,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+
+
 }

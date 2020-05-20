@@ -1,4 +1,3 @@
-
 @extends('layouts.admin')
 @extends('auth.menu-admin')
 @section('content')
@@ -10,12 +9,10 @@
 @else
     @section('title', "no hay titulo")
 @endif
-
-
     <section>
 
         <div class="container-fluid" style="padding: 25px;">
-            <form id="customer-register">
+            <form id="permissions-register">
                 @php
                     $contador = 0;
                 @endphp
@@ -55,6 +52,31 @@
 
     </section>
 
+
+
+
+
+    <section>
+
+        <div class="container-fluid w-100">
+            <div class="row">
+
+                <table id="table-permissions" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+                    <thead>
+
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                    <tfoot>
+
+                    </tfoot>
+                    </table>
+            </div>
+        </div>
+
+    </section>
+
     <section>
         <div class="container-fluid">
             <div class="row">
@@ -64,45 +86,10 @@
 
     </section>
 
-
-
-    <section>
-
-        <div class="container-fluid w-100">
-            <div class="row">
-
-                <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
-                    <thead>
-                      <tr>
-                          @foreach ($squemas as $col)
-                          <th class="th-sm">{{$col->column_name}}
-                        </th>
-                          @endforeach
-
-
-                      </tr>
-                    </thead>
-                    <tbody>
-
-                      </tbody>
-                    <tfoot>
-                      <tr>
-                        @foreach ($squemas as $col)
-                          <th class="th-sm">{{$col->column_name}}
-                        </th>
-                          @endforeach
-                      </tr>
-                    </tfoot>
-                  </table>
-            </div>
-        </div>
-
-    </section>
-
-
-
 @endsection
+
 
 @section('script')
-<script src="{{asset('js/auth/register.js')}}"></script>
+<script src="{{asset('js/auth/permissions_user.js')}}"></script>
 @endsection
+

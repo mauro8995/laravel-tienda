@@ -10,7 +10,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Dashboard</title>
+  <title>App - @yield('title')</title>
 
   <!-- Custom fonts for this template-->
   <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -18,11 +18,16 @@
 
   <!-- Custom styles for this template-->
   <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
+  <link href="{{asset('vendor/mdb/css/addons/datatables.min.css')}}" rel="stylesheet">
+
+  <!-- select csss-->
+  <link href="{{asset('vendor/select/bootstrap/bootstrap-select.min.css')}}" rel="stylesheet">
+
 
 </head>
 
 <body id="page-top">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
   <!-- Page Wrapper -->
   <div id="wrapper">
 
@@ -145,6 +150,7 @@
 
 @yield('content')
 
+
       <!-- Footer -->
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
@@ -199,9 +205,15 @@
   <script src="{{asset('vendor/chart.js/Chart.min.js')}}"></script>
 
   <!-- Page level custom scripts -->
-  <script src="{{asset('js/demo/chart-area-demo.js')}}"></script>
-  <script src="{{asset('js/demo/chart-pie-demo.js')}}"></script>
+  <script src="{{asset('js/general/change_input.js')}}"></script>
+  <script src="{{asset('vendor/mdb/js/addons/datatables.min.js')}}"></script>
+
+  <!-- Page select scripts -->
+  <script src="{{asset('vendor/select/bootstrap/bootstrap-select.min.js')}}"></script>
+
+  @yield('script')
 
 </body>
 
 </html>
+
