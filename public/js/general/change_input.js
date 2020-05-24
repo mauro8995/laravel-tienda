@@ -25,25 +25,7 @@ function chargeInput_select(id,defecto="default",value=0)
 }
 
 
-//cambiar a tabla
 
-function chargeInput_table(id_tabla,data,squema){
-    if(data.length != 0)
-    {
-        var c = [];
-
-        $.each(squema, function(i,d) {
-            c.push({data:d.column_name});
-        });
-
-        $('#'+id_tabla).DataTable({
-            data:data,
-            columns:c,
-            select:true,
-            "paging":false
-        });
-    }
-}
 
 
 //para los errores
@@ -92,7 +74,6 @@ function acomodarData(data,col){
                             o[index2]= value3.data[nom];
                     }
                 });
-
             });
             arr.push(o);
         });

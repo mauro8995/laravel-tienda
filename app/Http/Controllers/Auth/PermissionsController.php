@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Clases\Frontend\Input;
+use App\Clases\Frontend\permissios_admin;
 use Illuminate\Support\Facades\Validator;
 use App\Models\General\Permissions;
 use App\Models\General\User_permissions;
@@ -84,8 +85,6 @@ class PermissionsController extends Controller
             return response()->json([$r->errors()],400);
         }
         $d = new Input();
-
-        //$squema = $d->getTypeInput( new User_permissions());
         $p = User_permissions::where('id_user',request()->data['id_user'])->get();
         return response()->json(["data"=>$d->getDataAll('user_permissions',$p)]);
     }
@@ -102,8 +101,7 @@ class PermissionsController extends Controller
     }
 
     public function dataTest(){
-        $d = new Input();
-
-        return response()->json($d->getDataAll('permissions'));
+        $d = new permissios_admin();
+        return response()->json($d->getStatusPermission(2,2));
     }
 }

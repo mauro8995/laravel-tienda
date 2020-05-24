@@ -31,6 +31,11 @@ Route::post('/user/permissons/users', 'Auth\PermissionsController@getPermissions
 Route::post('/user/permissons', 'Auth\PermissionsController@getPermissions');
 Route::post('/user/permissons/users/register', 'Auth\PermissionsController@insert_permissions_user');
 
+//main
+Route::get('/main/view', 'Main\MainController@view_menu_admin');
+Route::post('/main/register', 'Main\MainController@register');
+Route::post('/main/register/get', 'Main\MainController@getMenuMains');
+Route::post('/main/register/get/section', 'Main\MainController@getSection');
 //test
 Route::get('/user/test/data', 'Auth\PermissionsController@dataTest');
 

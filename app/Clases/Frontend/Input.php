@@ -116,8 +116,6 @@ class Input
         return  DB::select("SELECT column_name FROM INFORMATION_SCHEMA.COLUMNS where table_name = '$table'");
     }
 
-    function getDataTable($tabla_local,$local_forena,$tabla_foranea,$llave_foranea){
-        return DB::select("select * from $tabla_local ".
-        "inner join $tabla_foranea on $tabla_foranea.$llave_foranea = $tabla_local.$local_forena ");
-    }
+
+
 }
