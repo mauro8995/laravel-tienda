@@ -5,36 +5,41 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
+    function view_login(){
+        return view('auth.login');
+    }
 
-    use AuthenticatesUsers;
+    function test(){
+        //Auth::logout();
+        return auth()->user()->id;
+    }
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    function login(){
+        $r =  Validator::make(request()->data, [
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'password' => ['required', 'string', 'min:2'],
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
+        ]);
+        if ($r->fails()) {
+            return response()->json([$r->errors()],400);
+        }
+
+          $credentials = [
+                'email' => request()->data['email'],
+                'password' =>request()->data['password'],
+            ];
+            if(Auth::attempt($credentials)){
+
+
+            }
+            else{
+                return 12;
+            }
     }
 }

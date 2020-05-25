@@ -1,76 +1,91 @@
-@extends('layouts.app')
-
+@extends('layouts.external.footer_header')
+@section('title', "login")
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-<a href="{{ url('auth/google') }}" style="margin-top: 20px;" class="btn btn-lg btn-success btn-block">
-                                  <strong>Login With Google</strong>
-                                </a> 
-                        </div>
-                    </form>
+<div class="contenedor-login" >
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4 col-sm-12 col-md-4 col-lg-4">
+                <div style="padding-top: 120px;">
+                    <H1>BIENVENIDO</H1>
+                    <p>
+                        Puede ingresar el usuario y contraseña o simplemente ingfresar con su cuenta de gmail
+                    </p>
                 </div>
+
             </div>
+            <div class="col-xs-4 col-sm-12 col-md-4 col-lg-4">
+                <form style="padding-top: 100px;" id="login-form">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">CORREO</label>
+                        <input type="email" class="form-control" name="email"  id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="INGRESAR CORREO">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">PASSWORD</label>
+                        <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="CONTRASEÑA">
+                    </div>
+                  </form>
+                  <button onclick="login()" class="btn btn-success">Ingresar</button>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <a href="{{ url('auth/google') }}" style="margin-top: 20px;" class="btn btn-lg btn-success btn-block">
+                    <strong>Login With Google</strong>
+                </a>
+            </div>
+
         </div>
     </div>
 </div>
+
+
+
+
+@endsection
+@section('script')
+<script>
+    $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') } });
+
+    $( document ).ready(function() {
+        $("body").css("background-color", "#CD5C5C");
+        $("body").css("color", "#fff");
+
+});
+
+function login(){
+    alert(12);
+    $.ajax({
+        type: "POST",
+        url: '/login/user/otro',
+        data: {
+            data:$("#login-form").serializeObject()},
+        success: function(response)
+        {
+            location.href = "/main/view";
+        }
+    });
+}
+
+//para el formulario
+$.fn.serializeObject = function(){
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function() {
+        if (o[this.name]) {
+            if (!o[this.name].push) {
+                o[this.name] = [o[this.name]];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
+        }
+    });
+    return o;
+};
+
+</script>
+
 @endsection

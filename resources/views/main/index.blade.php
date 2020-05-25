@@ -63,23 +63,22 @@
 
     <div class="container-fluid w-100">
         <div class="row">
+            <div class="col-12">
+                <table id="dturl" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-            <table id="dturl" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
-                <thead>
-                  <tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                            </tr>
+                        </tfoot>
+                    </table>
+            </div>
 
-
-                  </tr>
-                </thead>
-                <tbody>
-
-                  </tbody>
-                <tfoot>
-                  <tr>
-
-                  </tr>
-                </tfoot>
-              </table>
         </div>
     </div>
 

@@ -50,6 +50,7 @@ function getFillUrl(){
                 data:final,
                 columns:acomodarcol(response.data),
                 select:true,
+                "scrollX": true,
                 "paging":false
             });
         }
