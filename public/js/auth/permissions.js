@@ -31,7 +31,6 @@ function get()
                 select:true,
                 "paging":false
             });
-
         }
     });
 }

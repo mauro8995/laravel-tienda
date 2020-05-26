@@ -18,6 +18,7 @@ class LoginController extends Controller
     function test(){
         //Auth::logout();
         return auth()->user()->id;
+        return redirect()->to("/");
     }
 
     function login(){
@@ -34,12 +35,17 @@ class LoginController extends Controller
                 'email' => request()->data['email'],
                 'password' =>request()->data['password'],
             ];
-            if(Auth::attempt($credentials)){
 
+            if(Auth::attempt($credentials) ==1){
+                if(Auth::check()){
+
+                }else{
+                    return response()->json(["object"=>"error"],400);
+                }
 
             }
             else{
-                return 12;
+                return response()->json(["object"=>"error"],400);
             }
     }
 }

@@ -36,6 +36,11 @@ Route::group(['middleware' => 'login'], function(){
     Route::post('/main/register', 'Main\MainController@register');
     Route::post('/main/register/get', 'Main\MainController@getMenuMains');
     Route::post('/main/register/get/section', 'Main\MainController@getSection');
+
+    //modulos
+    Route::get('/modulo/view', 'Modulos\ModuloController@view_modulo');
+    Route::post('/modulo/register', 'Modulos\ModuloController@register');
+    Route::post('/modulo/get', 'Modulos\ModuloController@getModulo');
     //test
     Route::get('/user/test/data', 'Auth\loginController@test');
 });

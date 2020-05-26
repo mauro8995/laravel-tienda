@@ -25,6 +25,9 @@
                         <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="CONTRASEÑA">
                     </div>
                   </form>
+                  <div class="error-login">
+
+                  </div>
                   <button onclick="login()" class="btn btn-success">Ingresar</button>
             </div>
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
@@ -56,7 +59,7 @@
 });
 
 function login(){
-    alert(12);
+    $('.error-login').html('');
     $.ajax({
         type: "POST",
         url: '/login/user/otro',
@@ -65,7 +68,10 @@ function login(){
         success: function(response)
         {
             location.href = "/main/view";
-        }
+        }, error       : function(xhr, textStatus, errorThrown){
+            alert("Datos Incorrectos");
+        $('.error-login').html('<p>Atención, Ingrese los datos correctos.</p>');
+    }
     });
 }
 
