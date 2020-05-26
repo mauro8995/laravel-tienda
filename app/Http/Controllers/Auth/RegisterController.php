@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use App\Clases\Frontend\Input;
+use App\Clases\Frontend\main_ad;
 
 class RegisterController extends Controller
 {
@@ -23,8 +24,9 @@ class RegisterController extends Controller
     {
         $d = new  Input();
         $user = new User();
+        $menu = new main_ad();
         $squema = $d->getTypeInput($user);
-        return view('auth.register',['squemas' => $squema]);
+        return view('auth.register',['squemas' => $squema,"main"=>$menu->getMain()]);
     }
 
 

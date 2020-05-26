@@ -12,7 +12,7 @@ class UserController extends Controller
     public function getUsers()
     {
         $u = User::all();
-        //$squema = $d->getTypeInput('users');
-        return response()->json(["data"=>$u]);
+        $d =  new Input();
+        return response()->json(["object"=>"success", "data"=>$d->getDataAll('users',$u)]);
     }
 }

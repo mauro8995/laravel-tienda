@@ -1,4 +1,4 @@
-function create(){
+function create_permissions(){
     $.ajax({
         type: "POST",
         url: '/user/permissons/register',
@@ -12,25 +12,25 @@ function create(){
 
 }
 
-get();
-function get()
+get_permissions();
+function get_permissions()
 {
     $.ajax({
         type: "POST",
-        url: '/user/permissons',
+        url: '/user/permissons/get',
         data: {},
         success: function(response)
         {
             var col =   {"modified_by":'last_name',
-                            "created_by":'last_name'
-                        };
-            var final = acomodarData(response.data,col);
-            $('#dtBasicExample').DataTable({
-                data:final,
-                columns:acomodarcol(response.data),
-                select:true,
-                "paging":false
-            });
+            "created_by":'last_name',
+            "id_modulos":"name"
+        };
+        var final = acomodarData(response.data,col);
+        $('#table-permissions').DataTable({
+        data:final,
+        columns:acomodarcol(response.data),
+        "scrollX": true,
+        });
         }
     });
 }

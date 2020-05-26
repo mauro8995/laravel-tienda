@@ -57,7 +57,7 @@
     <section>
         <div class="container-fluid">
             <div class="row">
-                <button type="button" class="btn btn-primary" onclick="create();">REGISTRAR</button>
+                <button type="button" class="btn btn-primary" onclick="create_permissions();">REGISTRAR</button>
             </div>
         </div>
 
@@ -67,25 +67,27 @@
 
     <section>
 
-        <div class="container-fluid w-100">
+        <div class="container w-100">
             <div class="row">
+                <div class="col-12">
+                    <table id="table-permissions" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+                            <thead>
+                            <tr>
 
-                <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
-                    <thead>
-                      <tr>
 
+                            </tr>
+                            </thead>
+                            <tbody>
 
-                      </tr>
-                    </thead>
-                    <tbody>
+                            </tbody>
+                            <tfoot>
+                            <tr>
 
-                      </tbody>
-                    <tfoot>
-                      <tr>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
 
-                      </tr>
-                    </tfoot>
-                  </table>
             </div>
         </div>
 

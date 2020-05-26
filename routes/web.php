@@ -20,15 +20,16 @@ Route::post('/login/user/otro', 'Auth\LoginController@login');
 //user
 Route::group(['middleware' => 'login'], function(){
     Route::get('/user/register', 'Auth\RegisterController@view_register');
-    Route::post('/user/users', 'Auth\UserController@getUsers');
+    Route::post('/user/get', 'Auth\UserController@getUsers');
     Route::post('/user/register', 'Auth\RegisterController@create');
 
     //permison
-    Route::get('/user/permissons/register', 'Auth\PermissionsController@view_permissions');
+    Route::get('/permissons/view', 'Auth\PermissionsController@view_permissions');
+    Route::post('/user/permissons/get', 'Auth\PermissionsController@getPermissions');
     Route::post('/user/permissons/register', 'Auth\PermissionsController@create');
-    Route::get('/user/permissons/register/da', 'Auth\PermissionsController@view_permissions_user');
+    //permiscion user
+    Route::get('/user/permissons/view', 'Auth\PermissionsController@view_permissions_user');
     Route::post('/user/permissons/users', 'Auth\PermissionsController@getPermissions_user');
-    Route::post('/user/permissons', 'Auth\PermissionsController@getPermissions');
     Route::post('/user/permissons/users/register', 'Auth\PermissionsController@insert_permissions_user');
 
     //main

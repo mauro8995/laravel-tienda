@@ -58,7 +58,7 @@
     <section>
         <div class="container-fluid">
             <div class="row">
-                <button type="button" class="btn btn-primary" onclick="create();">REGISTRAR</button>
+                <button type="button" class="btn btn-primary" onclick="create_user();">REGISTRAR</button>
             </div>
         </div>
 
@@ -68,33 +68,23 @@
 
     <section>
 
-        <div class="container-fluid w-100">
+        <div class="container">
             <div class="row">
+                <div class="col-12">
+                    <table id="table-users" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+                        <thead>
+                        <tr>
+                        </tr>
+                        </thead>
+                        <tbody>
 
-                <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
-                    <thead>
-                      <tr>
-                          @foreach ($squemas as $col)
-                          <th class="th-sm">{{$col->column_name}}
-                        </th>
-                          @endforeach
+                        </tbody>
+                        <tfoot>
+                        </tfoot>
+                    </table>
+                </div>
 
-
-                      </tr>
-                    </thead>
-                    <tbody>
-
-                      </tbody>
-                    <tfoot>
-                      <tr>
-                        @foreach ($squemas as $col)
-                          <th class="th-sm">{{$col->column_name}}
-                        </th>
-                          @endforeach
-                      </tr>
-                    </tfoot>
-                  </table>
-            </div>
+                </div>
         </div>
 
     </section>

@@ -55,7 +55,7 @@
 </section>
 
 <section>
-    <button class="btn btn-success" onclick="register()">REGISTRAR</button>
+    <button class="btn btn-success" onclick="register_menu()">REGISTRAR</button>
 </section>
 
 <section>

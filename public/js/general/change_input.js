@@ -21,7 +21,8 @@ $.ajaxSetup({
 //cambiar al select
 function chargeInput_select(id,defecto="default",value=0)
 {
-    $("#"+id).replaceWith('<select name="'+id+'" id="'+id+'" class="selectpicker" data-width="80%" data-live-search="true"><option value="'+value+'">'+defecto+'</option></select>');
+
+    $("#"+id).replaceWith('<select name="'+id+'" id="'+id+'"  data-width="80%" data-live-search="true"><option value="'+value+'">'+defecto+'</option></select>');
 }
 
 

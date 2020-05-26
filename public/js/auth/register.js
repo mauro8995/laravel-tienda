@@ -1,7 +1,7 @@
 
 
 
-function create(){
+function create_user(){
     $.ajax({
         type: "POST",
         url: '/user/register',
@@ -15,29 +15,23 @@ function create(){
 
 }
 
-get();
-function get()
+get_user();
+function get_user()
 {
     $.ajax({
         type: "POST",
-        url: '/user/users',
+        url: '/user/get',
         data: {},
         success: function(response)
         {
-            $('#dtBasicExample').DataTable({
-                data:response.data,
-                columns:[
-                    {data:'id'},
-                    {data:'first_name'},
-                    {data:'last_name'},
-                    {data:'email'},
-                    {data:'email_verified_at'},
-                    {data:'email_verified_at'},
-                    {data:'email_verified_at'},
-                    {data:'google_id'},
-                ],
-                select:true,
-                "paging":false
+            var col =   {"modified_by":'last_name',
+            "created_by":'last_name'
+            };
+            var final = acomodarData(response.data,col);
+            $('#table-users').DataTable({
+            data:final,
+            columns:acomodarcol(response.data),
+            "scrollX": true,
             });
 
        }

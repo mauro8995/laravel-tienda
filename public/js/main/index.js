@@ -1,13 +1,13 @@
 
 
-function register(){
+function register_menu(){
     $.ajax({
         type: "POST",
         url: '/main/register',
         data: {data:$("#main-register").serializeObject()},
         success: function(response)
         {
-
+            location.reload();
 
         }
     });
@@ -20,7 +20,7 @@ function getSection(){
         data: {},
         success: function(response)
         {
-            chargeInput_select('section');
+            chargeInput_select('section',"titulo",'1');
             chargeInput_select('father');
             $.each(response.data.section, function(id,value){
                 $('#section').append('<option value="'+value.id+'">'+value.description+'</option>');

@@ -23,7 +23,6 @@
   <!-- select csss-->
   <link href="{{asset('vendor/select/bootstrap/bootstrap-select.min.css')}}" rel="stylesheet">
 
-
 </head>
 
 <body id="page-top">
@@ -60,13 +59,13 @@
 
             @foreach ($main as $item)
             <div class="sidebar-heading">
-                {{$item->description}}
+                <h6><i class="fas {{$item->incono}}"></i>{{$item->description}}</h6>
             </div>
                     @foreach ($item->children as $item2)
 
                         <li class="nav-item">
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo-{{$item2->id}}" aria-expanded="true" aria-controls="collapseTwo">
-                            <i class="fas fa-fw fa-cog"></i>
+                            <i class="fas fa-fw {{$item2->incono}}"></i>
                             <span>{{$item2->description}}</span>
                             </a>
                             <div id="collapseTwo-{{$item2->id}}" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">

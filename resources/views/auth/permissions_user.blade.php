@@ -53,7 +53,13 @@
     </section>
 
 
-
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <button type="button" class="btn btn-primary" onclick="create_persmissions_user();">REGISTRAR</button>
+            </div>
+        </div>
+    </section>
 
 
     <section>
@@ -61,7 +67,7 @@
         <div class="container-fluid w-100">
             <div class="row">
 
-                <table id="table-permissions" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+                <table id="table-permissions-users" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
                     <thead>
 
                     </thead>
@@ -77,14 +83,7 @@
 
     </section>
 
-    <section>
-        <div class="container-fluid">
-            <div class="row">
-                <button type="button" class="btn btn-primary" onclick="create();">REGISTRAR</button>
-            </div>
-        </div>
 
-    </section>
 
 @endsection
 

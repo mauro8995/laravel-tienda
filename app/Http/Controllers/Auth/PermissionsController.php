@@ -9,6 +9,7 @@ use App\Clases\Frontend\permissios_admin;
 use Illuminate\Support\Facades\Validator;
 use App\Models\General\Permissions;
 use App\Models\General\User_permissions;
+use App\Clases\Frontend\main_ad;
 
 class PermissionsController extends Controller
 {
@@ -18,7 +19,8 @@ class PermissionsController extends Controller
         $d = new  Input();
         $model = new Permissions();
         $squema = $d->getTypeInput($model);
-        return view('auth.permissions',['squemas' => $squema]);
+        $menu = new main_ad();
+        return view('auth.permissions',['squemas' => $squema,"main"=>$menu->getMain()]);
     }
 
     public function view_permissions_user()
@@ -26,8 +28,8 @@ class PermissionsController extends Controller
         $d = new  Input();
         $model = new User_permissions();
         $squema = $d->getTypeInput($model);
-
-        return view('auth.permissions_user',['squemas' => $squema]);
+        $menu = new main_ad();
+        return view('auth.permissions_user',['squemas' => $squema,"main"=>$menu->getMain()]);
     }
 
     function validator_permissions(array $data)
@@ -75,7 +77,7 @@ class PermissionsController extends Controller
         $d = new Input();
         $p = Permissions::all();
         $data = $d->getDataAll('permissions',$p);
-        return response()->json(["data"=>$data]);
+        return response()->json(["object"=>"success","data"=>$data]);
     }
 
     public function getPermissions_user()
@@ -97,7 +99,9 @@ class PermissionsController extends Controller
         $u = new User_permissions();
         $u->id_permissions = request()->data['id_permissions'];
         $u->id_user = request()->data['id_user'];
-        return $u->save();
+        $u->save();
+
+        return response()->json(["object"=>"success","message"=>"Registrado correctamente."]);
     }
 
     public function dataTest(){
